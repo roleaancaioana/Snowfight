@@ -1,0 +1,97 @@
+//Copyright Rolea Anca Ioana 313CA
+
+	Am construit mai multe functii pentru a
+realiza acest program: 
+-Functia aloca_2d m-a ajutat sa aloc memorie dinamic 
+pentru matricea dimensiunilor manusilor si pentru
+matricea inaltimilor. 
+
+-Functia elibereaza_2d m-a ajutat sa eliberez 
+memoria alocata acestor 2 matrici 
+la finalul programului.
+
+-Functia castigator m-a ajutat sa vad ce spiridus
+a castigat. Aceasta verifica daca a mai ramas un
+singur spiridus pe ghetar si in caz afirmativ 
+intoarce id-ul acestuia.
+
+-Functia id_spiridus intoarce id-ul unui spiridus
+caruia ii stim coordonatele de pe ghetar.
+
+-Functia spiridus_in_ghetar m-a ajutat sa verific
+cu ajutorul formulei matematice a distantei daca
+un spiridus a cazut de pe ghetar sau nu. 
+
+-Functia atac modifica hp-ul a 2 spiridusi care
+se bat. Se tine cont de faptul ca intotdeauna 
+spiridusul care incepe bataia cu bulgari este 
+cel cu stamina mai mare. In cazul in care au 
+staminele egale va ataca spiridusul care a 
+intrat in celula respectiva, adica spiridusul
+cu id-ul "a". De asemenea, cand unul dintre
+spiridusi se uda leoarca au loc modificarile
+aferente: spiridusul invingator castiga stamina
+celuilalt spiridus, stamina jucatorului invins
+devine 0, numarul de jucatori eliminati
+corespunzator spiridusului invingator creste, 
+se afiseaza mesajul cerut, iar prin intermediul 
+vectorului spiridus_plecat marcam faptul ca 
+spiridusul invins nu mai este pe ghetar.
+
+-Functia atribuire_dmg le atribuie manusi 
+spiridusilor. Daca un spiridus aterizeaza 
+pe ghetar, ia manusa din celula respectiva, 
+iar apoi in celula respectiva nu mai exista 
+nicio manusa pentru ca a fost luata de spiridus.:)
+
+-Functia schimbare_dmg ajuta un spiridus sa-si 
+schimbe manusile in cazul in care acesta s-a 
+plimbat de la o celula la alta si a gasit o 
+pereche de manusi mai mari. 
+
+-Functia spiridus_in_afara_ghetarului verifica daca 
+un jucator apare in afara ghetarului si in caz 
+afirmativ afiseaza un mesaj corespunzator. 
+In caz contrar, inseamna ca spiridusul 
+a aterizat pe ghetar si ii 
+atribuie manusa din celula in care a aterizat.
+
+-Functia consum_stamina modifica stamina unui spiridus 
+atunci cand se plimba de la o celula la alta.
+
+-Functia mutare_D muta spiridusul mai jos cu o celula.
+Aceasta verifica daca spiridusul are suficienta stamina 
+pentru a se deplasa de la o celula la alta. Daca are 
+suficienta stamina, atunci acesta va efectua mutarea. 
+Variabila id reprezinta id-ul spiridusului aflat in 
+celula in care s-a deplasat primul spiridus. Daca 
+variabila id are valoarea -1 inseamna ca in celula 
+respectiva nu exista un spiridus. Daca in urma mutarii, 
+spiridusul cade de pe ghetar, atunci se va afisa un 
+mesaj corespunzator. Daca ramane pe ghetar atunci 
+spiridusul va incerca sa-si schimbe manusile in cazul 
+in care gaseste altele mai bune in celula in care a 
+intrat. Daca in celula in care a intrat exista un alt 
+spiridus, atunci cei 2 spiridusi se vor duela. 
+
+-Functia mutare_U muta spiridusul mai sus cu o celula. 
+Functia mutare_R muta spiridusul la dreapta cu o celula. 
+Functia mutare_L muta spiridusul la stanga cu o celula. 
+Toate aceste 3 functii au un mecanism de functionare 
+analog cu cel al functiei mutare_D.
+
+-In functia mutare vectorul u memoreaza mutarile pe care un spiridus trebuie sa le faca, variabila a memoreaza id-ul spiridusului care efectueaza mutarea, iar vectorul v memoreaza sirul de caractere "MOVE". Mutarile se efectueaza doar daca un spiridus este inca pe ghetar (spiridus_plecat != 1).
+
+-In functia furtuna_de_zapada am utilizat operatii pe biti pentru a extrage coordonatele epicentrului furtunii de zapada, raza circulara a furtunii si dimensiunea bulgarilor ce vor afecta jucatorii. Apoi cu ajutorul formulei distantei am verificat daca un spiridus se afla pe raza furtunii si in caz afirmativ, am scazut hp-ul acestuia. Daca in urma furtunii, hp-ul spiridusului e negativ, atunci se va afisa mesajul corespunzator si spiridusul nu va mai fi pe ghetar. De asemenea, am tratat si cazul in care furtuna ar avea raza 0.
+
+-In functia topire variabila c este menita sa retina numarul de topiri de ghetar care au avut loc. Cu ajutorul functiei spiridus_in_ghetar verificam daca in urma topirii ghetarului un spiridus a cazut in apa sau nu. Schimbam apoi coordonatele spiridusilor si repozitionam matricea in care se afla spiridusii dupa topire. Practic, vom lucra in aceeasi matrice initiala, doar ca vor exista unele celule pe care nu le vom mai accesa. La final, vom elibera memoria pentru matricea initiala, cea de dinaintea primei topiri. Astfel vom elibera memoria si pentru celule acelea pe care nu le mai "foloseam" in urma unei topiri.
+
+-In functia afisare_scoreboard vectorul uscat memoreaza id-urile spiridusilor care sunt inca pe ghetar, iar vectorul umed memoreaza id-urile spiridusilor care nu mai sunt pe ghetar. Apoi am interschimbat aceste id-uri avand drept criteriu de ordonare numarul de jucatori eliminati de fiecare spiridus. La final am tinut cont si de al treilea criteriu de sortare, interschimband numele spiridusilor pentru a-i putea afisa in ordine lexicografica in cazul in care au acelasi numar de jucatori eliminati si aceeasi stare(umed sau uscat).
+
+-Functia citire_date m-a ajutat sa citesc datele din fisier.
+
+-Functia afisare m-a ajutat sa afisez datele in fisier.
+
+-In functia main am deschis fisierele cu care am lucrat, am alocat memorie pentru vectorul de spiridusi, pentru matricea inaltimilor si pentru matricea dimensiunilor manusilor. Apoi am apelat functiile de citire_date si afisare, iar la final am eliberat memoria.
+
+
